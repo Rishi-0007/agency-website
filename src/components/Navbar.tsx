@@ -1,7 +1,7 @@
 "use client"; // Required for client-side interactivity
 
 import Link from "next/link";
-import { Globe, Moon, Sun } from "lucide-react";
+import { Globe, Moon, Sun, Headset } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -63,15 +63,30 @@ export function Navbar() {
         { name: "PPC", href: "/services/digital-marketing/ppc" },
       ],
     },
+    {
+      title: "Marketing Services",
+      href: "/services/marketing-services",
+      description:
+        "Comprehensive marketing strategies to grow your business and brand.",
+      image: "/images/marketing-services.jpg",
+      subServices: [
+        { name: "Email Marketing", href: "/services/marketing-services/email" },
+        {
+          name: "Influencer Marketing",
+          href: "/services/marketing-services/influencer",
+        },
+        { name: "Analytics", href: "/services/marketing-services/analytics" },
+      ],
+    },
   ];
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center space-x-2">
+        <Link href="/" className="flex items-center space-x-2 ml-5">
           <Globe className="h-6 w-6" />
-          <span className="text-lg font-bold">Agency</span>
+          <span className="text-lg font-bold">Mahadev Agency</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -161,12 +176,27 @@ export function Navbar() {
             )}
           </Button>
 
-          {/* Get Started Button */}
-          <Button>Get Started</Button>
+          <Button>
+            Get Quote <Headset />
+          </Button>
         </nav>
 
         {/* Mobile Drawer */}
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center gap-2">
+          {/* Theme Toggle for Mobile */}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          >
+            {theme === "dark" ? (
+              <Sun className="h-5 w-5" />
+            ) : (
+              <Moon className="h-5 w-5" />
+            )}
+          </Button>
+
+          {/* Menu Icon */}
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
@@ -199,7 +229,9 @@ export function Navbar() {
                 >
                   Contact
                 </Link>
-                <Button className="mt-4">Get Started</Button>
+                <Button className="mt-4">
+                  Get Quote <Headset />
+                </Button>
               </div>
             </SheetContent>
           </Sheet>
