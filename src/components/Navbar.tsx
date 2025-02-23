@@ -26,7 +26,7 @@ export function Navbar() {
       href: "/services/graphic-design",
       description:
         "Creative designs that help you stand out and make a lasting impression.",
-      image: "/images/graphic-design.jpg",
+      image: "/images/graphic-design.webp",
       subServices: [
         { name: "Logo Design", href: "/services/graphic-design/logo" },
         { name: "Branding", href: "/services/graphic-design/branding" },
@@ -41,7 +41,7 @@ export function Navbar() {
       href: "/services/web-development",
       description:
         "Custom websites and web applications built with the latest technologies.",
-      image: "/images/web-dev.jpg",
+      image: "/images/web-dev.webp",
       subServices: [
         { name: "E-commerce", href: "/services/web-development/ecommerce" },
         { name: "CMS Development", href: "/services/web-development/cms" },
@@ -53,7 +53,7 @@ export function Navbar() {
       href: "/services/digital-marketing",
       description:
         "Strategic marketing solutions to boost your online presence and reach.",
-      image: "/images/digital-marketing.jpg",
+      image: "/images/digital-marketing.webp",
       subServices: [
         { name: "SEO", href: "/services/digital-marketing/seo" },
         {
@@ -68,7 +68,7 @@ export function Navbar() {
       href: "/services/marketing-services",
       description:
         "Comprehensive marketing strategies to grow your business and brand.",
-      image: "/images/marketing-services.jpg",
+      image: "/images/marketing.webp",
       subServices: [
         { name: "Email Marketing", href: "/services/marketing-services/email" },
         {
