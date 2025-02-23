@@ -66,7 +66,7 @@ function Hero() {
   ];
 
   return (
-    <section className="w-full py-6 md:py-12 lg:py-18 xl:py-18 bg-gradient-to-b from-background to-muted">
+    <section className="w-full py-6 md:py-12 lg:py-18 xl:py-18 bg-gradient-to-b from-background to-muted mt-16">
       <div className=" px-4 md:px-6">
         <div className="hidden md:flex flex-row items-center justify-center mb-10 w-full">
           <AnimatedTooltip items={people} />

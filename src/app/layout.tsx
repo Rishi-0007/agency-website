@@ -25,10 +25,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex w-full flex-col overflow-x-hidden">
-            <Navbar />
-            <main className="flex-1">{children}</main>
-          </div>
+          <Navbar />
+          <main className="flex-1">{children}</main>
         </ThemeProvider>
       </body>
     </html>
