@@ -3,6 +3,7 @@
 import { AnimatedTooltip } from "@/components/ui/animated-tooltip";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { TypewriterEffect } from "./ui/typewriter-effect";
+import { motion } from "framer-motion";
 
 function Hero() {
   const people = [
@@ -76,9 +77,15 @@ function Hero() {
         </div>
 
         <div className="flex flex-col items-center justify-center">
-          <p className="text-neutral-600 dark:text-neutral-200 text-xs sm:text-base mb-4 ">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed my-4"
+          >
             The road to freedom starts from here
-          </p>
+          </motion.p>
 
           <TypewriterEffect words={words} />
           <DotLottieReact

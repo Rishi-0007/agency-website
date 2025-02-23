@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import createGlobe from "cobe";
-
+import { motion } from "framer-motion";
 export function WorkSection() {
   const projects = [
     {
@@ -34,15 +34,27 @@ export function WorkSection() {
   ];
 
   return (
-    <div className="relative z-20 py-10 lg:py-40 max-w-7xl mx-auto">
-      <div className="px-8">
-        <h4 className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white">
+    <div id="work" className="relative z-20 py-10 lg:py-40 max-w-7xl mx-auto">
+      <div className="px-8 flex flex-col items-center justify-center space-y-4">
+        <motion.h4
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto tracking-tight font-medium text-black dark:text-white"
+        >
           Our Creative Portfolio
-        </h4>
-        <p className="text-sm lg:text-base max-w-2xl my-4 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300">
+        </motion.h4>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="max-w-[600px] text-muted-foreground md:text-xl/relaxed text-center"
+        >
           Explore our diverse range of photography and videography projects that
           showcase our creative expertise and technical excellence.
-        </p>
+        </motion.p>
       </div>
 
       <div className="relative">

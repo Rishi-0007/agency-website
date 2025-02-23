@@ -157,7 +157,7 @@ export function Navbar() {
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="/about" legacyBehavior passHref>
+                <Link href="/#about" legacyBehavior passHref>
                   <NavigationMenuLink
                     className={
                       navigationMenuTriggerStyle() && "bg-transparent mx-2"
@@ -168,7 +168,7 @@ export function Navbar() {
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="/contact" legacyBehavior passHref>
+                <Link href="/#contact" legacyBehavior passHref>
                   <NavigationMenuLink
                     className={
                       navigationMenuTriggerStyle() && "bg-transparent mx-2"

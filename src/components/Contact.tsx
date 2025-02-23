@@ -1,0 +1,133 @@
+"use client";
+
+import { Mail, Phone, MapPin } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { motion } from "framer-motion";
+
+export default function ContactPage() {
+  return (
+    <section id="contact" className="relative w-full py-12 md:py-24 lg:py-32">
+      <div className="absolute top-0 left-0 w-full overflow-hidden leading-[0] -mt-16 z-0">
+        <svg
+          className="relative block w-full h-20 text-[#fafafa] dark:text-background"
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+        >
+          <path
+            fill="currentColor"
+            d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+          />
+        </svg>
+      </div>
+      <div className="px-4 md:px-6">
+        <div className="flex flex-col items-center justify-center space-y-4 text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto tracking-tight font-medium text-black dark:text-white"
+          >
+            Get in Touch
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
+          >
+            We&apos;d love to hear from you! Whether you have a question, a
+            project idea, or just want to say hello, feel free to reach out.
+          </motion.p>
+        </div>
+
+        <div className="grid gap-8 lg:grid-cols-2 lg:gap-16 mt-12">
+          {/* Contact Form */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="space-y-6"
+          >
+            <form className="grid gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <Input placeholder="First Name" required />
+                <Input placeholder="Last Name" required />
+              </div>
+              <Input type="email" placeholder="Email" required />
+              <Input placeholder="Subject" required />
+              <Textarea placeholder="Your Message" rows={5} required />
+              <Button type="submit" size="lg" className="w-full md:w-auto">
+                Send Message
+              </Button>
+            </form>
+          </motion.div>
+
+          {/* Contact Details */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="space-y-6"
+          >
+            <div className="space-y-4">
+              <h3 className="text-xl font-bold">Contact Information</h3>
+              <p className="text-muted-foreground">
+                We&apos;re here to help! Reach out to us via email, phone, or
+                visit our office.
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              <div className="flex items-center gap-4">
+                <Mail className="h-6 w-6 text-primary" />
+                <div>
+                  <p className="font-medium">Email</p>
+                  <p className="text-muted-foreground">hello@agency.com</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <Phone className="h-6 w-6 text-primary" />
+                <div>
+                  <p className="font-medium">Phone</p>
+                  <p className="text-muted-foreground">+1 (555) 123-4567</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <MapPin className="h-6 w-6 text-primary" />
+                <div>
+                  <p className="font-medium">Address</p>
+                  <p className="text-muted-foreground">
+                    123 Creative St, Suite 456
+                    <br />
+                    San Francisco, CA 94107
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Embedded Map */}
+            <div className="rounded-lg overflow-hidden">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8354345093747!2d-122.4194154846816!3d37.77492997975921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c6c8f4459%3A0xb10ed6d9b5050fa5!2sGolden%20Gate%20Bridge!5e0!3m2!1sen!2sus!4v1633023222539!5m2!1sen!2sus"
+                width="100%"
+                height="300"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                className="rounded-lg"
+              />
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
