@@ -158,8 +158,20 @@ export function Services() {
   return (
     <section
       id="services"
-      className="w-full py-6 md:py-12 lg:py-18 xl:py-24 rounded-tl-3xl rounded-tr-3xl bg-[#fafafa] dark:bg-background"
+      className="relative w-full py-6 md:py-12 lg:py-18 xl:py-24 rounded-tl-3xl rounded-tr-3xl bg-[#fafafa] dark:bg-background"
     >
+      <div className="absolute top-0 left-0 w-full overflow-hidden leading-[0] -mt-16 z-0">
+        <svg
+          className="relative block w-full h-20 text-[#fafafa] dark:text-background"
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+        >
+          <path
+            fill="currentColor"
+            d="M0,256L48,224C96,192,192,128,288,117.3C384,107,480,149,576,170.7C672,192,768,192,864,170.7C960,149,1056,107,1152,117.3C1248,128,1344,192,1392,224L1440,256L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+          />
+        </svg>
+      </div>
       <div className="px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">

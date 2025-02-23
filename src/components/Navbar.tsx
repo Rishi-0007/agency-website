@@ -85,7 +85,7 @@ export function Navbar() {
       <div className="flex h-16 mt-2 items-center justify-between px-4 md:px-6">
         {/* Logo */}
         <Link href="/" className="flex items-center">
-          <Image src={"/logo.png"} width={100} height={100} alt="logo" />
+          <Image src={"/images/logo.png"} width={100} height={100} alt="logo" />
           <span className="text-lg font-bold">Dream Design</span>
         </Link>
 
