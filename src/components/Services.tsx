@@ -160,7 +160,7 @@ export function Services() {
       id="services"
       className="w-full py-6 md:py-12 lg:py-18 xl:py-24 rounded-tl-3xl rounded-tr-3xl bg-[#fafafa] dark:bg-background"
     >
-      <div className="container px-4 md:px-6">
+      <div className="px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">

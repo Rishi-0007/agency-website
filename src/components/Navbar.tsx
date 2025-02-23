@@ -1,7 +1,7 @@
 "use client"; // Required for client-side interactivity
 
 import Link from "next/link";
-import { Globe, Moon, Sun, Headset } from "lucide-react";
+import { Moon, Sun, Headset } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -82,11 +82,11 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
+      <div className="flex h-16 mt-2 items-center justify-between px-4 md:px-6">
         {/* Logo */}
-        <Link href="/" className="flex items-center space-x-2 ml-5">
-          <Globe className="h-6 w-6" />
-          <span className="text-lg font-bold">Mahadev Agency</span>
+        <Link href="/" className="flex items-center">
+          <Image src={"/logo.png"} width={100} height={100} alt="logo" />
+          <span className="text-lg font-bold">Dream Design</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -95,7 +95,13 @@ export function Navbar() {
             <NavigationMenuList>
               {/* Services Dropdown */}
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Services</NavigationMenuTrigger>
+                <NavigationMenuTrigger
+                  className={
+                    navigationMenuTriggerStyle() && "bg-transparent mx-2"
+                  }
+                >
+                  Services
+                </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <div className="grid w-[400px] gap-3 p-4 md:w-[500px] lg:w-[600px] lg:grid-cols-2">
                     {services.map((service) => (
@@ -141,21 +147,33 @@ export function Navbar() {
               {/* Other Links */}
               <NavigationMenuItem>
                 <Link href="/#work" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  <NavigationMenuLink
+                    className={
+                      navigationMenuTriggerStyle() && "bg-transparent mx-2"
+                    }
+                  >
                     Work
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link href="/about" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  <NavigationMenuLink
+                    className={
+                      navigationMenuTriggerStyle() && "bg-transparent mx-2"
+                    }
+                  >
                     About
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link href="/contact" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  <NavigationMenuLink
+                    className={
+                      navigationMenuTriggerStyle() && "bg-transparent mx-2"
+                    }
+                  >
                     Contact
                   </NavigationMenuLink>
                 </Link>
