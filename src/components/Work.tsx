@@ -128,9 +128,9 @@ const ReelSkeleton = () => {
 const PhotoGridSkeleton = () => {
   const images = [
     "/work/p1.jpg",
-    "/work/bottle.png",
-    "/work/p2.jpg",
-    "/work/p3.webp",
+    "/work/p2.png",
+    "/work/p3.jpg",
+    "/work/p4.jpg",
   ];
 
   return (
