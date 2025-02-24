@@ -194,9 +194,15 @@ export function Navbar() {
             )}
           </Button>
 
-          <Button>
-            Get Quote <Headset />
-          </Button>
+          <Link
+            href={
+              "https://wa.me/916203186661?text=Hello!%20I%27d%20like%20to%20learn%20more%20about%20DreamxDesign%27s%20services.%20Can%20we%20chat%3F"
+            }
+          >
+            <Button>
+              Get Quote <Headset />
+            </Button>
+          </Link>
         </nav>
 
         {/* Mobile Drawer */}
@@ -247,9 +253,16 @@ export function Navbar() {
                 >
                   Contact
                 </Link>
-                <Button className="mt-4">
-                  Get Quote <Headset />
-                </Button>
+
+                <Link
+                  href={
+                    "https://wa.me/916203186661?text=Hello!%20I%27d%20like%20to%20learn%20more%20about%20DreamxDesign%27s%20services.%20Can%20we%20chat%3F"
+                  }
+                >
+                  <Button className="mt-4 w-full">
+                    Get Quote <Headset />
+                  </Button>
+                </Link>
               </div>
             </SheetContent>
           </Sheet>

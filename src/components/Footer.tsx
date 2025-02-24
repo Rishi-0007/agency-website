@@ -1,9 +1,10 @@
 "use client";
 
-import { Facebook, Instagram, MessageCircle, Mail } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { SocialIcon } from "react-social-icons";
+
 export function Footer() {
   return (
     <footer className="w-full border-t bg-muted dark:bg-black">
@@ -29,32 +30,64 @@ export function Footer() {
           >
             <div className="flex gap-4">
               <Link
-                href="https://facebook.com"
+                href="https://www.facebook.com/profile.php?id=61573714854623"
                 target="_blank"
-                className="p-2 rounded-full border border-muted-foreground hover:border-primary hover:text-primary text-muted-foreground transition-colors"
+                className="hover:opacity-80 transition-opacity"
               >
-                <Facebook className="h-5 w-5" />
+                <div className="border-2 border-muted-foreground rounded-full p-1">
+                  <SocialIcon
+                    network="facebook"
+                    style={{ height: 45, width: 45 }}
+                    fgColor="currentColor"
+                    bgColor="transparent"
+                    className="text-muted-foreground hover:text-primary"
+                  />
+                </div>
               </Link>
               <Link
-                href="https://instagram.com"
+                href="https://www.instagram.com/dreamxdesign.pro/?hl=en"
                 target="_blank"
-                className="p-2 rounded-full border border-muted-foreground hover:border-primary hover:text-primary text-muted-foreground transition-colors"
+                className="hover:opacity-80 transition-opacity"
               >
-                <Instagram className="h-5 w-5" />
+                <div className="border-2 border-muted-foreground rounded-full p-1">
+                  <SocialIcon
+                    network="instagram"
+                    style={{ height: 45, width: 45 }}
+                    fgColor="currentColor"
+                    bgColor="transparent"
+                    className="text-muted-foreground hover:text-primary"
+                  />
+                </div>
               </Link>
               <Link
-                href="https://wa.me/1234567890"
+                href="https://wa.me/916203186661?text=Hello!%20I%27d%20like%20to%20learn%20more%20about%20DreamxDesign%27s%20services.%20Can%20we%20chat%3F"
                 target="_blank"
-                className="p-2 rounded-full border border-muted-foreground hover:border-primary hover:text-primary text-muted-foreground transition-colors"
+                className="hover:opacity-80 transition-opacity"
               >
-                <MessageCircle className="h-5 w-5" />
+                <div className="border-2 border-muted-foreground rounded-full p-1">
+                  <SocialIcon
+                    network="whatsapp"
+                    style={{ height: 45, width: 45 }}
+                    fgColor="currentColor"
+                    bgColor="transparent"
+                    className="text-muted-foreground hover:text-primary"
+                  />
+                </div>
               </Link>
               <Link
-                href="mailto:hello@agency.com"
+                href="mailto:info@dreamxdesign.pro"
                 target="_blank"
-                className="p-2 rounded-full border border-muted-foreground hover:border-primary hover:text-primary text-muted-foreground transition-colors"
+                className="hover:opacity-80 transition-opacity"
               >
-                <Mail className="h-5 w-5" />
+                <div className="border-2 border-muted-foreground rounded-full p-1">
+                  <SocialIcon
+                    network="email"
+                    style={{ height: 45, width: 45 }}
+                    fgColor="currentColor"
+                    bgColor="transparent"
+                    className="text-muted-foreground hover:text-primary"
+                  />
+                </div>
               </Link>
             </div>
           </motion.div>

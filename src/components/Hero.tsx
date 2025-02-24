@@ -61,7 +61,7 @@ function Hero() {
       text: "with",
     },
     {
-      text: "Dream Desgin.",
+      text: "Dream Design.",
       className: "text-blue-500 dark:text-blue-500",
     },
   ];

@@ -1,9 +1,6 @@
 "use client";
 
 import { Mail, Phone, MapPin } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { motion } from "framer-motion";
 
 export default function ContactPage() {
@@ -45,31 +42,8 @@ export default function ContactPage() {
         </div>
 
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-16 mt-12">
-          {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="space-y-6"
-          >
-            <form className="grid gap-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Input placeholder="First Name" required />
-                <Input placeholder="Last Name" required />
-              </div>
-              <Input type="email" placeholder="Email" required />
-              <Input placeholder="Subject" required />
-              <Textarea placeholder="Your Message" rows={5} required />
-              <Button type="submit" size="lg" className="w-full md:w-auto">
-                Send Message
-              </Button>
-            </form>
-          </motion.div>
-
-          {/* Contact Details */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.4 }}
@@ -88,15 +62,25 @@ export default function ContactPage() {
                 <Mail className="h-6 w-6 text-primary" />
                 <div>
                   <p className="font-medium">Email</p>
-                  <p className="text-muted-foreground">hello@agency.com</p>
+                  <a
+                    href="mailto:info@dreamxdesign.pro"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    info@dreamxdesign.pro
+                  </a>
                 </div>
               </div>
 
               <div className="flex items-center gap-4">
                 <Phone className="h-6 w-6 text-primary" />
                 <div>
-                  <p className="font-medium">Phone</p>
-                  <p className="text-muted-foreground">+1 (555) 123-4567</p>
+                  <p className="font-medium">WhatsApp</p>
+                  <a
+                    href="https://wa.me/916203186661?text=Hello!%20I%27d%20like%20to%20learn%20more%20about%20DreamxDesign%27s%20services.%20Can%20we%20chat%3F"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    +91 620-318-6661
+                  </a>
                 </div>
               </div>
 
@@ -105,26 +89,33 @@ export default function ContactPage() {
                 <div>
                   <p className="font-medium">Address</p>
                   <p className="text-muted-foreground">
-                    123 Creative St, Suite 456
+                    DigitalSherpa
                     <br />
-                    San Francisco, CA 94107
+                    Unit 806, Tower 2, Godrej Waterside, Plot DP5, Sector V,
+                    Bidhannagar, Kolkata, West Bengal 700091
                   </p>
                 </div>
               </div>
             </div>
+          </motion.div>
 
-            {/* Embedded Map */}
-            <div className="rounded-lg overflow-hidden">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8354345093747!2d-122.4194154846816!3d37.77492997975921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c6c8f4459%3A0xb10ed6d9b5050fa5!2sGolden%20Gate%20Bridge!5e0!3m2!1sen!2sus!4v1633023222539!5m2!1sen!2sus"
-                width="100%"
-                height="300"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                className="rounded-lg"
-              />
-            </div>
+          {/* Map Column */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="rounded-lg overflow-hidden h-full min-h-[400px]"
+          >
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7368.298636166876!2d88.43757!3d22.573518!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a027535ad832d67%3A0x1be584f99b3096b0!2sDigitalSherpa!5e0!3m2!1sen!2sin!4v1740419920749!5m2!1sen!2sin"
+              width="800"
+              height="400"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
           </motion.div>
         </div>
       </div>
