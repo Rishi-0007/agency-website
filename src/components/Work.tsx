@@ -182,7 +182,7 @@ const GlobeSkeleton = () => {
       devicePixelRatio: 2,
       width: 600 * 2,
       height: 600 * 2,
-      phi: 0.1,
+      phi: 0,
       theta: 0,
       dark: 1,
       diffuse: 1.2,
@@ -193,8 +193,6 @@ const GlobeSkeleton = () => {
       glowColor: [1, 1, 1],
       markers: [
         { location: [37.7749, -122.4194], size: 0.1 }, // San Francisco
-        { location: [48.8566, 2.3522], size: 0.1 }, // Paris
-        { location: [35.6895, 139.6917], size: 0.1 }, // Tokyo
         { location: [51.5074, -0.1278], size: 0.1 }, // London
         { location: [-33.8688, 151.2093], size: 0.1 }, // Sydney
         { location: [40.7128, -74.006], size: 0.1 }, // New York
@@ -207,7 +205,7 @@ const GlobeSkeleton = () => {
       ],
       onRender: (state) => {
         state.phi = phi;
-        phi += 0.01;
+        phi += 0.02;
       },
     });
 

@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Footer } from "@/components/Footer";
+import { Loader } from "@/components/loader"; // Import the Loader component
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,9 +27,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
+          {/* Wrap the entire application with the Loader */}
+          <Loader>
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </Loader>
         </ThemeProvider>
       </body>
     </html>
