@@ -186,7 +186,7 @@ const GlobeSkeleton = () => {
       theta: 0,
       dark: 1,
       diffuse: 1.2,
-      mapSamples: 16000,
+      mapSamples: 8000,
       mapBrightness: 6,
       baseColor: [0.3, 0.3, 0.3],
       markerColor: [0.1, 0.8, 1],
@@ -200,10 +200,8 @@ const GlobeSkeleton = () => {
         { location: [40.7128, -74.006], size: 0.1 }, // New York
         { location: [28.6139, 77.209], size: 0.1 }, // New Delhi
         { location: [19.076, 72.8777], size: 0.1 }, // Mumbai
-        { location: [17.3617, 78.4712], size: 0.1 }, // Hyderabad
         { location: [22.5726, 88.3639], size: 0.1 }, // Kolkata
         { location: [12.9716, 77.5946], size: 0.1 }, // Bangalore
-        { location: [13.0827, 80.2707], size: 0.1 }, // Chennai
         { location: [25.2769, 55.2962], size: 0.1 }, // Dubai
         { location: [1.3521, 103.8198], size: 0.1 }, // Singapore
       ],
