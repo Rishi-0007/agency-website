@@ -186,8 +186,8 @@ const GlobeSkeleton = () => {
       theta: 0,
       dark: 1,
       diffuse: 1.2,
-      mapSamples: 2000,
-      mapBrightness: 4,
+      mapSamples: 1000,
+      mapBrightness: 3,
       baseColor: [0.3, 0.3, 0.3],
       markerColor: [0.1, 0.8, 1],
       glowColor: [1, 1, 1],
@@ -205,7 +205,7 @@ const GlobeSkeleton = () => {
       ],
       onRender: (state) => {
         state.phi = phi;
-        phi += 0.02;
+        phi += 0.03;
       },
     });
 
