@@ -186,7 +186,7 @@ const GlobeSkeleton = () => {
       dark: 1,
       diffuse: 1.2,
       scale: 1,
-      mapSamples: 16000,
+      mapSamples: 6000,
       mapBrightness: 6,
       baseColor: [0.3, 0.3, 0.3],
       markerColor: [0.1, 0.8, 1],
