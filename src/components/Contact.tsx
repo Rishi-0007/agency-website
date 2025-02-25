@@ -89,7 +89,7 @@ export default function ContactPage() {
                 <div>
                   <p className="font-medium">Address</p>
                   <p className="text-muted-foreground">
-                    DigitalSherpa
+                    DreamxDesign
                     <br />
                     Unit 806, Tower 2, Godrej Waterside, Plot DP5, Sector V,
                     Bidhannagar, Kolkata, West Bengal 700091

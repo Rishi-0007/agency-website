@@ -1,13 +1,13 @@
 "use client";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 import createGlobe from "cobe";
 import { motion } from "framer-motion";
 export function WorkSection() {
   const projects = [
     {
-      title: "Reel: Motivation Campaign",
+      title: "Reel",
       description: "Reels for a client",
       skeleton: <ReelSkeleton />,
       className:
@@ -171,51 +171,52 @@ const YouTubeSkeleton = () => {
 };
 
 const GlobeSkeleton = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [canvasRef, setCanvasRef] = useState<HTMLCanvasElement | null>(null);
+  let phi = 0;
 
   useEffect(() => {
-    let phi = 0;
+    if (!canvasRef) return;
 
-    if (!canvasRef.current) return;
-
-    const globe = createGlobe(canvasRef.current, {
+    const globe = createGlobe(canvasRef, {
       devicePixelRatio: 2,
-      width: 600 * 2,
-      height: 600 * 2,
+      width: 1000,
+      height: 1000,
       phi: 0,
       theta: 0,
       dark: 1,
       diffuse: 1.2,
-      mapSamples: 8000,
-      mapBrightness: 4,
+      scale: 1,
+      mapSamples: 16000,
+      mapBrightness: 6,
       baseColor: [0.3, 0.3, 0.3],
       markerColor: [0.1, 0.8, 1],
       glowColor: [1, 1, 1],
+      offset: [0, 0],
       markers: [
-        { location: [37.7749, -122.4194], size: 0.1 }, // San Francisco
-        { location: [51.5074, -0.1278], size: 0.1 }, // London
-        { location: [-33.8688, 151.2093], size: 0.1 }, // Sydney
-        { location: [40.7128, -74.006], size: 0.1 }, // New York
-        { location: [28.6139, 77.209], size: 0.1 }, // New Delhi
-        { location: [19.076, 72.8777], size: 0.1 }, // Mumbai
-        { location: [22.5726, 88.3639], size: 0.1 }, // Kolkata
-        { location: [12.9716, 77.5946], size: 0.1 }, // Bangalore
-        { location: [25.2769, 55.2962], size: 0.1 }, // Dubai
-        { location: [1.3521, 103.8198], size: 0.1 }, // Singapore
+        { location: [28.6139, 77.209], size: 0.03 }, // New Delhi
+        { location: [19.076, 72.8777], size: 0.03 }, // Mumbai
+        { location: [22.5726, 88.3639], size: 0.03 }, // Kolkata
+        { location: [51.5074, -0.1278], size: 0.03 }, // London
+        { location: [40.7128, -74.006], size: 0.03 }, // New York
+        { location: [35.6762, 139.6503], size: 0.03 }, // Tokyo
+        { location: [1.3521, 103.8198], size: 0.03 }, // Singapore
       ],
       onRender: (state) => {
-        phi += 0.01;
+        // Called on every animation frame.
+        // `state` will be an empty object, return updated params.
         state.phi = phi;
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        phi += 0.01;
       },
     });
 
     return () => globe.destroy();
-  }, []);
+  }, [canvasRef]);
 
   return (
     <div className="h-60 md:h-80 flex flex-col items-center relative">
       <canvas
-        ref={canvasRef}
+        ref={setCanvasRef}
         style={{ width: 600, height: 600, maxWidth: "100%", aspectRatio: 1 }}
         className="absolute -top-20"
       />
