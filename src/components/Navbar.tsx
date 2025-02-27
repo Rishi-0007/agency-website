@@ -16,66 +16,59 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
+import { useState } from "react";
 
 export function Navbar() {
   const { theme, setTheme } = useTheme();
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const handleLinkClick = () => {
+    setIsDrawerOpen(false);
+  };
 
   const services = [
     {
       title: "Graphic Design",
-      href: "/services/graphic-design",
+      href: "/#services",
       description:
         "Creative designs that help you stand out and make a lasting impression.",
       image: "/images/graphic-design.webp",
       subServices: [
-        { name: "Logo Design", href: "/services/graphic-design/logo" },
-        { name: "Branding", href: "/services/graphic-design/branding" },
-        {
-          name: "Print Design",
-          href: "/services/graphic-design/print",
-        },
+        { name: "Logo Design" },
+        { name: "Branding" },
+        { name: "Print Design" },
       ],
     },
     {
       title: "Web Development",
-      href: "/services/web-development",
+      href: "/#services",
       description:
         "Custom websites and web applications built with the latest technologies.",
       image: "/images/web-dev.webp",
       subServices: [
-        { name: "E-commerce", href: "/services/web-development/ecommerce" },
-        { name: "CMS Development", href: "/services/web-development/cms" },
-        { name: "API Integration", href: "/services/web-development/api" },
+        { name: "E-commerce" },
+        { name: "CMS Development" },
+        { name: "API Integration" },
       ],
     },
     {
       title: "Digital Marketing",
-      href: "/services/digital-marketing",
+      href: "/#services",
       description:
         "Strategic marketing solutions to boost your online presence and reach.",
       image: "/images/digital-marketing.webp",
-      subServices: [
-        { name: "SEO", href: "/services/digital-marketing/seo" },
-        {
-          name: "Social Media",
-          href: "/services/digital-marketing/social-media",
-        },
-        { name: "PPC", href: "/services/digital-marketing/ppc" },
-      ],
+      subServices: [{ name: "SEO" }, { name: "Social Media" }, { name: "PPC" }],
     },
     {
       title: "Marketing Services",
-      href: "/services/marketing-services",
+      href: "/#services",
       description:
         "Comprehensive marketing strategies to grow your business and brand.",
       image: "/images/marketing.webp",
       subServices: [
-        { name: "Email Marketing", href: "/services/marketing-services/email" },
-        {
-          name: "Influencer Marketing",
-          href: "/services/marketing-services/influencer",
-        },
-        { name: "Analytics", href: "/services/marketing-services/analytics" },
+        { name: "Email Marketing" },
+        { name: "Influencer Marketing" },
+        { name: "Analytics" },
       ],
     },
   ];
@@ -86,7 +79,9 @@ export function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <Image src={"/images/logo.png"} width={100} height={100} alt="logo" />
-          <span className="text-lg font-bold">Dream Design</span>
+          <span className="text-lg font-bold">
+            Dream<span className="text-red-500">x</span>Design
+          </span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -128,13 +123,12 @@ export function Navbar() {
                           </p>
                           <div className="flex flex-wrap gap-2">
                             {service.subServices.map((subService) => (
-                              <Link
+                              <span
                                 key={subService.name}
-                                href={subService.href}
-                                className="text-xs text-primary hover:underline"
+                                className="text-xs text-primary"
                               >
                                 {subService.name}
-                              </Link>
+                              </span>
                             ))}
                           </div>
                         </NavigationMenuLink>
@@ -196,7 +190,7 @@ export function Navbar() {
 
           <Link
             href={
-              "https://wa.me/916203186661?text=Hello!%20I%27d%20like%20to%20learn%20more%20about%20DreamxDesign%27s%20services.%20Can%20we%20chat%3F"
+              "https://wa.me/917858987979?text=Hello!%20I%27d%20like%20to%20learn%20more%20about%20DreamxDesign%27s%20services.%20Can%20we%20chat%3F"
             }
           >
             <Button>
@@ -221,7 +215,7 @@ export function Navbar() {
           </Button>
 
           {/* Menu Icon */}
-          <Sheet>
+          <Sheet open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
                 <Menu className="h-6 w-6" />
@@ -232,32 +226,37 @@ export function Navbar() {
                 <Link
                   href="/#services"
                   className="text-sm font-medium hover:underline underline-offset-4"
+                  onClick={handleLinkClick}
                 >
                   Services
                 </Link>
                 <Link
                   href="/#work"
                   className="text-sm font-medium hover:underline underline-offset-4"
+                  onClick={handleLinkClick}
                 >
                   Work
                 </Link>
                 <Link
-                  href="/about"
+                  href="/#about"
                   className="text-sm font-medium hover:underline underline-offset-4"
+                  onClick={handleLinkClick}
                 >
                   About
                 </Link>
                 <Link
-                  href="/contact"
+                  href="/#contact"
                   className="text-sm font-medium hover:underline underline-offset-4"
+                  onClick={handleLinkClick}
                 >
                   Contact
                 </Link>
 
                 <Link
                   href={
-                    "https://wa.me/916203186661?text=Hello!%20I%27d%20like%20to%20learn%20more%20about%20DreamxDesign%27s%20services.%20Can%20we%20chat%3F"
+                    "https://wa.me/917858987979?text=Hello!%20I%27d%20like%20to%20learn%20more%20about%20DreamxDesign%27s%20services.%20Can%20we%20chat%3F"
                   }
+                  onClick={handleLinkClick}
                 >
                   <Button className="mt-4 w-full">
                     Get Quote <Headset />

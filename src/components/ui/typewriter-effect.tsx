@@ -57,7 +57,10 @@ export const TypewriterEffect = ({
             <motion.span
               initial={{ opacity: 0, transform: "translateY(10px)" }}
               key={`char-${index}`}
-              className={cn("char dark:text-white text-black", word.className)}
+              className={cn(
+                "char dark:text-white text-black",
+                char === "x" ? word.className : ""
+              )}
             >
               {char}
             </motion.span>

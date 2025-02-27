@@ -18,7 +18,9 @@ export function Footer() {
           >
             {" "}
             <Image src="/images/logo.png" alt="Logo" width={100} height={100} />
-            <p className="font-bold">Dream Design</p>
+            <p className="font-bold">
+              Dream<span className="text-red-500">x</span>Design
+            </p>
           </motion.div>
 
           {/* Social Media */}
@@ -100,7 +102,7 @@ export function Footer() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="mt-12 border-t pt-8 text-center text-muted-foreground"
         >
-          <p>© 2024 Agency. All rights reserved.</p>
+          <p>© 2025 DreamxDesign. All rights reserved.</p>
         </motion.div>
       </div>
     </footer>

@@ -1,6 +1,6 @@
 "use client";
 
-import { Globe, Zap, Palette, Rocket, X } from "lucide-react";
+import { Globe, Zap, Palette, Rocket, X, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useRef, useState } from "react";
@@ -11,12 +11,14 @@ import {
   CardTitle,
   CardDescription,
   CardContent,
+  CardFooter,
 } from "@/components/ui/card";
 
 export function Services() {
   const [activeService, setActiveService] = useState<
     (typeof services)[number] | null
   >(null);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const modalRef = useRef<HTMLDivElement>(null);
   // Close modal on outside click
   useOutsideClick(modalRef as React.RefObject<HTMLDivElement>, () =>
@@ -33,6 +35,7 @@ export function Services() {
       subServices: ["SEO", "Social Media", "PPC", "Content Marketing"],
       color: "bg-purple-50 dark:bg-purple-900/20",
       borderColor: "border-purple-500 dark:border-purple-400",
+      hoverColor: "hover:bg-purple-100 dark:hover:bg-purple-900/30",
       content: () => (
         <div className="space-y-4">
           <p>
@@ -70,6 +73,7 @@ export function Services() {
       ],
       color: "bg-blue-50 dark:bg-blue-900/20",
       borderColor: "border-blue-500 dark:border-blue-400",
+      hoverColor: "hover:bg-blue-100 dark:hover:bg-blue-900/30",
       content: () => (
         <div className="space-y-4">
           <p>
@@ -98,6 +102,7 @@ export function Services() {
       subServices: ["Logo Design", "Branding", "Print Design", "UI/UX Design"],
       color: "bg-green-50 dark:bg-green-900/20",
       borderColor: "border-green-500 dark:border-green-400",
+      hoverColor: "hover:bg-green-100 dark:hover:bg-green-900/30",
       content: () => (
         <div className="space-y-4">
           <p>
@@ -132,6 +137,7 @@ export function Services() {
       ],
       color: "bg-orange-50 dark:bg-orange-900/20",
       borderColor: "border-orange-500 dark:border-orange-400",
+      hoverColor: "hover:bg-orange-100 dark:hover:bg-orange-900/30",
       content: () => (
         <div className="space-y-4">
           <p>
@@ -154,6 +160,64 @@ export function Services() {
       ),
     },
   ];
+
+  // Enhanced animation variants for smoother transitions
+  const overlayVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.3,
+        ease: [0.22, 1, 0.36, 1], // Custom cubic-bezier for smooth fade in
+      },
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        duration: 0.2,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
+
+  const modalVariants = {
+    hidden: {
+      opacity: 0,
+      scale: 0.95,
+    },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 300,
+        damping: 25,
+        mass: 0.5,
+        velocity: 2,
+      },
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.98,
+      transition: {
+        duration: 0.15,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const contentVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.1,
+        duration: 0.4,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
 
   return (
     <section
@@ -200,17 +264,38 @@ export function Services() {
           {services.map((service, index) => (
             <motion.div
               key={index}
-              layoutId={`card-${service.title}`}
+              layoutId={`card-container-${service.title}`}
               onClick={() => setActiveService(service)}
+              onMouseEnter={() => setHoveredCard(index)}
+              onMouseLeave={() => setHoveredCard(null)}
               className="h-full"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: 0.5,
+                  delay: index * 0.1,
+                },
+              }}
+              viewport={{ once: true }}
             >
               <Card
-                className={`cursor-pointer hover:shadow-lg transition-shadow h-full border-2 ${service.borderColor} ${service.color} flex flex-col`}
+                className={`cursor-pointer transform transition-all duration-300 h-full border-2 ${
+                  service.borderColor
+                } ${service.color} ${service.hoverColor} flex flex-col ${
+                  hoveredCard === index
+                    ? "shadow-lg -translate-y-1"
+                    : "shadow hover:shadow-md"
+                }`}
               >
-                <CardHeader className="flex flex-col items-center text-center p-6 flex-grow">
-                  <div className="flex justify-center text-3xl mb-4">
+                <CardHeader className="flex flex-col items-center text-center p-6">
+                  <motion.div
+                    className="flex justify-center text-3xl mb-4"
+                    whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+                  >
                     {service.icon}
-                  </div>
+                  </motion.div>
                   <CardTitle className="text-xl md:text-2xl">
                     {service.title}
                   </CardTitle>
@@ -218,6 +303,41 @@ export function Services() {
                     {service.description}
                   </CardDescription>
                 </CardHeader>
+                <CardFooter className="flex justify-center pt-0 pb-6 mt-auto">
+                  <div
+                    className={`flex items-center gap-1 text-sm font-medium ${
+                      service.title === "Digital Marketing"
+                        ? "text-purple-600 dark:text-purple-400"
+                        : service.title === "Web Development"
+                        ? "text-blue-600 dark:text-blue-400"
+                        : service.title === "Graphic Design"
+                        ? "text-green-600 dark:text-green-400"
+                        : "text-orange-600 dark:text-orange-400"
+                    }`}
+                  >
+                    <span>View Details</span>
+                    <motion.div
+                      animate={{
+                        x: hoveredCard === index ? 5 : 0,
+                      }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 10,
+                      }}
+                    >
+                      <ChevronRight className="h-4 w-4" />
+                    </motion.div>
+                  </div>
+                </CardFooter>
+                {hoveredCard === index && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="absolute inset-0 bg-black bg-opacity-5 dark:bg-white dark:bg-opacity-5 rounded-xl pointer-events-none"
+                  />
+                )}
               </Card>
             </motion.div>
           ))}
@@ -229,30 +349,39 @@ export function Services() {
         {activeService && (
           <>
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2, ease: "easeInOut" }}
-              className="fixed inset-0 bg-black/50 z-50"
+              variants={overlayVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
               onClick={() => setActiveService(null)}
             />
             <div className="fixed inset-0 flex items-center justify-center z-[100] p-4 overflow-y-auto">
               <motion.div
-                layoutId={`card-${activeService.title}`}
+                variants={modalVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
                 ref={modalRef}
-                transition={{
-                  type: "spring",
-                  stiffness: 300,
-                  damping: 30,
-                }}
-                className="w-full max-w-3xl bg-white dark:bg-neutral-900 rounded-xl overflow-hidden relative mx-2 my-4 md:my-0"
+                className="w-full max-w-3xl bg-white dark:bg-neutral-900 rounded-xl overflow-hidden relative mx-2 my-4 md:my-0 shadow-2xl"
               >
                 {/* Close button for mobile */}
                 <motion.button
                   initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
+                  animate={{
+                    opacity: 1,
+                    scale: 1,
+                    transition: {
+                      delay: 0.3,
+                      duration: 0.2,
+                      type: "spring",
+                    },
+                  }}
                   exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.2 }}
+                  whileHover={{
+                    scale: 1.1,
+                    backgroundColor: "rgba(0, 0, 0, 0.7)",
+                  }}
                   onClick={() => setActiveService(null)}
                   className="absolute top-2 right-2 z-10 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors"
                   aria-label="Close modal"
@@ -260,38 +389,39 @@ export function Services() {
                   <X className="h-5 w-5" />
                 </motion.button>
 
-                <motion.div
-                  layoutId={`image-${activeService.title}`}
-                  transition={{ duration: 0.3 }}
-                >
+                <div className="w-full h-64 overflow-hidden">
                   <Image
                     src={activeService.image}
                     alt={activeService.title}
                     width={800}
                     height={400}
-                    className="w-full h-64 object-cover"
+                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                   />
-                </motion.div>
+                </div>
+
                 <CardContent className="p-6 md:p-8 pb-8">
                   <motion.h3
-                    layoutId={`title-${activeService.title}`}
-                    transition={{ duration: 0.3 }}
+                    variants={contentVariants}
+                    initial="hidden"
+                    animate="visible"
                     className="text-2xl font-bold"
                   >
                     {activeService.title}
                   </motion.h3>
                   <motion.p
-                    layoutId={`description-${activeService.description}`}
-                    transition={{ duration: 0.3 }}
+                    variants={contentVariants}
+                    initial="hidden"
+                    animate="visible"
+                    transition={{ delay: 0.2 }}
                     className="text-muted-foreground mt-2"
                   >
                     {activeService.description}
                   </motion.p>
                   <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 20 }}
-                    transition={{ delay: 0.2, duration: 0.3 }}
+                    variants={contentVariants}
+                    initial="hidden"
+                    animate="visible"
+                    transition={{ delay: 0.3 }}
                     className="mt-6"
                   >
                     {activeService.content()}
@@ -300,9 +430,15 @@ export function Services() {
                   {/* Mobile-friendly close button at bottom */}
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    animate={{
+                      opacity: 1,
+                      y: 0,
+                      transition: {
+                        delay: 0.4,
+                        duration: 0.3,
+                      },
+                    }}
                     exit={{ opacity: 0, y: 20 }}
-                    transition={{ delay: 0.2, duration: 0.3 }}
                     className="mt-8 flex justify-center md:hidden"
                   >
                     <button

@@ -76,10 +76,10 @@ export default function ContactPage() {
                 <div>
                   <p className="font-medium">WhatsApp</p>
                   <a
-                    href="https://wa.me/916203186661?text=Hello!%20I%27d%20like%20to%20learn%20more%20about%20DreamxDesign%27s%20services.%20Can%20we%20chat%3F"
+                    href="https://wa.me/917858987979?text=Hello!%20I%27d%20like%20to%20learn%20more%20about%20DreamxDesign%27s%20services.%20Can%20we%20chat%3F"
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
-                    +91 620-318-6661
+                    +91 7858987979
                   </a>
                 </div>
               </div>
@@ -108,9 +108,9 @@ export default function ContactPage() {
             className="rounded-lg overflow-hidden h-full min-h-[400px]"
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7368.298636166876!2d88.43757!3d22.573518!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a027535ad832d67%3A0x1be584f99b3096b0!2sDigitalSherpa!5e0!3m2!1sen!2sin!4v1740419920749!5m2!1sen!2sin"
-              width="800"
-              height="400"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.1434324674965!2d88.43544517512667!3d22.57373817949082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0275a90240750b%3A0x775bb056fddb8d04!2sGodrej%20Waterside!5e0!3m2!1sen!2sin!4v1740665486842!5m2!1sen!2sin"
+              width="100%"
+              height="450"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
