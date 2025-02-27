@@ -62,7 +62,7 @@ export function Footer() {
                 </div>
               </Link>
               <Link
-                href="https://wa.me/916203186661?text=Hello!%20I%27d%20like%20to%20learn%20more%20about%20DreamxDesign%27s%20services.%20Can%20we%20chat%3F"
+                href="https://wa.me/917858987979?text=Hello!%20I%27d%20like%20to%20learn%20more%20about%20DreamxDesign%27s%20services.%20Can%20we%20chat%3F"
                 target="_blank"
                 className="hover:opacity-80 transition-opacity"
               >
