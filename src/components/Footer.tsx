@@ -77,7 +77,7 @@ export function Footer() {
                 </div>
               </Link>
               <Link
-                href="mailto:info@dreamxdesign.pro"
+                href="mailto:dreamxdesignpro@gmail.com"
                 target="_blank"
                 className="hover:opacity-80 transition-opacity"
               >
